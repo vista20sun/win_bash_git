@@ -14,6 +14,10 @@ int main(int argc, char** argv)
 	{
 		string str(argv[i]);
 		x.append(" ");
+		string::size_type idx;
+		idx = str.find(" ");
+		if (idx != string::npos)
+			x.append("'");
 		if (regex_match(str, match, reg))
 		{
 			transform(str.begin(), str.end(), str.begin(), tolower);
@@ -24,6 +28,9 @@ int main(int argc, char** argv)
 			x.append("/mnt/");
 		}
 		x.append(str);
+		if (idx != string::npos)
+			x.append("'");
+
 	}
 	x.append("\"");
 	system(x.c_str());
